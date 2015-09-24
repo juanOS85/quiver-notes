@@ -1,0 +1,13 @@
+{
+  "title": "Variables",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "#Closures: Functions Stay Connected to Their Birth Scopes\n\nA *closure* is a function plus the connection to the scope in which the function was created."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch16.html#closures)"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Factory functions",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "Prior to strict mode, this language glitch caused hard-to-find bugs at two different startups I worked for, during critical growth periods when we didn’t have a lot of extra time to chase down hard-to-find bugs.\n\nIn JavaScript, **factory functions** are simply constructor functions minus the `new` requirement, global pollution danger and awkward limitations (including that annoying initial capitalized letter convention).\n\n**JavaScript doesn’t need constructor functions** because any function can return a new object. With dynamic object extension, object literals and `Object.create()`, we have everything we need — with none of the mess. And `this` behaves just like it does in any other function. Hurray!\n\n[Source](https://medium.com/javascript-scene/the-two-pillars-of-javascript-ee6f3281e7f3)"
+    }
+  ]
+}

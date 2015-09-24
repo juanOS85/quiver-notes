@@ -1,0 +1,9 @@
+{
+  "title": "undefined vs null",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "- `undefined` means “no value” (neither primitive nor object). Uninitialized variables, missing parameters, and missing properties have that nonvalue. And functions implicitly return it if nothing has been explicitly returned.\n- `null` means “no object.” It is used as a nonvalue where an object is expected (as a parameter, as a member in a chain of objects, etc.).\n\n[Source](http://speakingjs.com/es5/ch08.html#undefined_null)"
+    }
+  ]
+}

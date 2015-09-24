@@ -1,0 +1,9 @@
+{
+  "title": "Integers",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "Don't use `parseInt(str, radix)` to conver a number to integer, instead use:\n- `Math.ceil`\n- `Math.floor`\n- `Math.round`\n\n[Source](http://speakingjs.com/es5/ch11.html#parseInt)"
+    }
+  ]
+}

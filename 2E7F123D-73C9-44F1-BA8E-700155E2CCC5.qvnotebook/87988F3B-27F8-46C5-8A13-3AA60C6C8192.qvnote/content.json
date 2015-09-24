@@ -1,0 +1,31 @@
+{
+  "title": "Change folders permissions recursively",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "For folder"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "find /path/to/folder -type d -exec chmod 755 {} \\;"
+    },
+    {
+      "type": "markdown",
+      "data": "For files"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "find /path/to/files -type f -exec chmod 644 {} \\;"
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://stackoverflow.com/a/11512211/1357423)"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

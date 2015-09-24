@@ -1,0 +1,90 @@
+{
+  "title": "Objects and Inheritance",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "#Single Objects\n##Deleting properties\nThe `delete` operator lets you completely remove a property (the whole key-value pair) from an object"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "> var obj = { hello: 'world' };\n> delete obj.hello\ntrue\n> obj.hello\nundefined"
+    },
+    {
+      "type": "markdown",
+      "data": "##The Prototype Relationship Between Objects\nThe prototype relationship between two objects is about inheritance: every object can have another object as its prototype. Then the former object inherits all of its prototype’s properties. An object specifies its prototype via the internal property `[[Prototype]]`. Every object has this property, but it can be `null`. The chain of objects connected by the `[[Prototype]]` property is called the *prototype chain*."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "var proto = {\n  describe: function () {\n    return 'name: '+this.name;\n  }\n};\n\nvar obj = {\n  // the following is pretengin is possible access the internal property [[Prototype]] from JavaScript. But the language does not let you do that.\n  [[Prototype]]: proto,\n  name: 'obj'\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "The object `obj` inherits the property describe from `proto`. It also has a so-called own (noninherited, direct) property, `name`."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch17.html#prototype_relationship)"
+    },
+    {
+      "type": "markdown",
+      "data": "###Iteration and Detection of Properties\n**Inheritance (own properties versus inherited properties):** An own property of an object is stored directly in that object. An inherited property is stored in one of its prototypes.\n**Enumerability (enumerable properties versus nonenumerable properties):** The enumerability of a property is an *attribute*, a flag that can be true or false. Enumerability rarely matters and can normally be ignored."
+    },
+    {
+      "type": "markdown",
+      "data": "###Property attributes\nSpecific to normal properties:\n- **[[Value]]** [undefined] holds the value.\n- **[[Writable]]** [false] (boolean) indicates whether the value can be changed.\n\nSpecific for accessors:\n- **[[Get]]** [undefined] holds a function that is called when a property is read.\n- **[[Set]]** [undefined] holds a function that is called when a property is set to a value.\n\nAll properties have the following: \n- **[[Enumerable]]** [undefined] (boolean) making a property nonenumerable hides it from some operations.\n- **[[Configurable]]** [undefined] (boolean) If it is false, you cannot delete a property, change any of its attributes (except [[Value]]), or convert it from a data property to an accessor property or vice versa. In other words, [[Configurable]] controls the writability of a property’s metadata."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch17.html#_property_attributes)"
+    },
+    {
+      "type": "markdown",
+      "data": "###Getting and Defining Properties via Descriptors\n- `Object.getOwnPropertyDescriptor(obj, propKey)` returns the descriptor of the own (noninherited) property of `obj` whose key is `propKey`. \n- `Object.defineProperty(obj, propKey, propDesc)` create or change a property of `obj` whose key is `propKey` and whose attributes are specified via `propDesc`.\n- `Object.defineProperties(obj, propDescObj)` the batch version of `Object.defineProperty()`\n- `Object.create(proto, propDescObj?)` first, create an object whose prototype is `proto`. Then, if the optional parameter `propDescObj` has been specified, add properties to it—in the same manner as `Object.defineProperties`. Finally, return the result."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch17.html#functions_for_property_descriptors)"
+    },
+    {
+      "type": "markdown",
+      "data": "###Protecting objects\nThere are three levels of protecting an object (listed from weakest to strongest):\n- **Preventing extension**: `Object.preventExtensions(obj)` makes it impossible to add properties to `obj`.  To check if is extensible use `Object.isExtensible(obj)`\n- **Sealing**: `Object.seal(obj)` prevents extensions and makes all properties “unconfigurable”. To check if is sealed use `Object.isSealed(obj)`.\n- **Freezing**: `Object.freeze(obj)` makes all properties nonwritable and seals `obj`.   To check if is frozen use `Object.isFrozen(obj)`."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch17.html#protecting_objects)"
+    },
+    {
+      "type": "markdown",
+      "data": "##Constructors—Factories for Instances\n- A *constructor function* (short: *constructor*) helps with producing objects that are similar in some way. It is a normal function, but it is named, set up, and invoked differently.  They correspond to classes in other languages.\n- A constructor is a function that is invoked via the `new` operator.\n- By convention, the names of constructors start with uppercase letters, while the names of normal functions and methods start with lowercase letters (camel case, mostly)."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function SomeConstructor(x, y) {\n  // Data is instance-specific and stored in the own properties of the instance objects\n  this.x = x;\n  this.y = y;\n}\n\n/*\n- Behavior is shared by all instances—they have a common prototype object with methods\n- The object in `SomeConstructor.prototype` becomes the prototype of all instances of `SomeConstructor`\n*/\nSomeConstructor.prototype.someMethod = function () {\n    return this.x + ', ' + this.y;\n};\n\n/*\n- First the behavior is set up: a new object is created whose prototype is `SomeConstructor.prototype\n- Then the data is set up: Person receives that object as the implicit parameter this and adds instance properties\n*/\nvar someObject = new SomeConstructor(1.5, 4);"
+    },
+    {
+      "type": "markdown",
+      "data": "###The constructor Property of Instances\nBy default, each function `C` contains an instance prototype object C.prototype whose property constructor points back to C:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "> function C() {}\n> C.prototype.constructor === C\ntrue"
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch17.html#constructor_property)"
+    },
+    {
+      "type": "markdown",
+      "data": "###The `instanceof` Operator\nIt determines whether value has been created by the constructor `Constr` or a subconstructor. It does so by checking whether Constr.prototype is in the prototype chain of value. Therefore, the following two expressions are equivalent:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "value instanceof Constr\nConstr.prototype.isPrototypeOf(value)"
+    }
+  ]
+}

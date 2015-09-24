@@ -1,0 +1,114 @@
+{
+  "title": "Functions",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "#Function expression\n\nA function expression produces a value—a function object."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "var add = function (x, y) { return x + y };\nconsole.log(add(2, 3)); // 5"
+    },
+    {
+      "type": "markdown",
+      "data": "##Named function expressions\n\n*Named function expressions* allow a function expression to refer to itself, which is useful for self-recursion."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "var fac = function me(n) {\n    if (n > 0) {\n        return n * me(n-1);\n    } else {\n        return 1;\n    }\n};\nconsole.log(fac(3)); // 6"
+    },
+    {
+      "type": "markdown",
+      "data": "**Note:** The name of a named function expression is only accessible inside the function expression"
+    },
+    {
+      "type": "markdown",
+      "data": "#Function declaration"
+    },
+    {
+      "type": "markdown",
+      "data": "A *function declaration* declares a new variable, creates a function object, and assigns it to the variable"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function add(x, y) {\n    return x + y;\n}"
+    },
+    {
+      "type": "markdown",
+      "data": "The preceding code is roughly equivalent to the following code:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "var add = function (x, y) {\n    return x + y;\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "#Hoisting"
+    },
+    {
+      "type": "markdown",
+      "data": "*Hoisting* means “moving to the beginning of a scope.” Function declarations are hoisted completely, variable declarations only partially."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "foo();\nfunction foo() {}  // this function is hoisted"
+    },
+    {
+      "type": "markdown",
+      "data": "The reason the preceding code works is that JavaScript engines move the declaration of foo to the beginning of the scope. They execute the code as if it looked like this:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function foo() {}\nfoo();"
+    },
+    {
+      "type": "markdown",
+      "data": "#More Control over Function Calls: `call()`, `apply()`, and `bind()`"
+    },
+    {
+      "type": "markdown",
+      "data": "`call()`, `apply()`, and `bind()` are methods that all functions have.  They can supply a value for this when invoking a method and thus are mainly interesting in an object-oriented context."
+    },
+    {
+      "type": "markdown",
+      "data": "##`func.apply(thisValue, argArray)`\nThis method uses the elements of `argArray` as arguments while calling the function `func`; that is, the following two expressions are equivalent:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "func(arg1, arg2, arg3)\nfunc.apply(null, [arg1, arg2, arg3])"
+    },
+    {
+      "type": "markdown",
+      "data": "`thisValue` is the value that this has while executing `func`. It is not needed in a non-object-oriented setting and is thus null here.\n\n`apply()` is useful whenever a function accepts multiple arguments in an array-like manner, but not an array"
+    },
+    {
+      "type": "markdown",
+      "data": "##`func.bind(thisValue, arg1, ..., argN)`\nThis performs *partial function application*—a new function is created that calls `func` with `this` set to `thisValue` and the following arguments: first `arg1` until `argN`, and then the actual arguments of the new function. `thisValue` is not needed in the following non-object-oriented setting, which is why it is `null`"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function add(x, y) {\n    return x + y;\n}\nvar plus1 = add.bind(null, 1);\nconsole.log(plus1(5));  // 6"
+    },
+    {
+      "type": "markdown",
+      "data": "In other words, we have created a new function that is equivalent to the following code"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function plus1(y) {\nreturn add(1, y);\n}"
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch15.html#defining_functions)"
+    }
+  ]
+}

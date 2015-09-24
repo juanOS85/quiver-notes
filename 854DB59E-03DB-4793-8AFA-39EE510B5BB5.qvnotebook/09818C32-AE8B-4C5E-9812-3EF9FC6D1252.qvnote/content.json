@@ -1,0 +1,9 @@
+{
+  "title": "Strings",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "#Methods\n\n- `String.prototype.substring` should be avoided in favor or`String.prototype.slice`"
+    }
+  ]
+}

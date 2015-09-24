@@ -1,0 +1,10 @@
+{
+  "title": "Solve conflicts really quickly",
+  "cells": [
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "\n# Keep my changes\ngit checkout --ours FILES\n\n# Keep their changes\ngit checkout --theirs FILES\n"
+    }
+  ]
+}

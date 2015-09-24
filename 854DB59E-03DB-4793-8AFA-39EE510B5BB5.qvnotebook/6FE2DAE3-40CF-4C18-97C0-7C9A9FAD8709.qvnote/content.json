@@ -1,0 +1,9 @@
+{
+  "title": "Strict mode",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "ECMAScript 5 has a `strict mode` that results in cleaner JavaScript, with fewer unsafe features, more warnings, and more logical behavior. The normal (nonstrict) mode is sometimes called “sloppy mode.”\n\n[Source](http://speakingjs.com/es5/ch07.html#strict_mode)"
+    }
+  ]
+}

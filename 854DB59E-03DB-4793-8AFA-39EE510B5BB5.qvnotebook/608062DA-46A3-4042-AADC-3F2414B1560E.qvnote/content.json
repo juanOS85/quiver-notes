@@ -1,0 +1,26 @@
+{
+  "title": "Expressions vs Statements",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "#Expression\n\nAn expression produces a value and can be written wherever a value is expected—for example, as an argument in a function call or at the right side of an assignment."
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "myvar\n3 + x\nmyfunc('a', 'b')"
+    },
+    {
+      "type": "markdown",
+      "data": "#Statement\n\nRoughly, a statement performs an action. Loops and if statements are examples of statements.\n\nWherever JavaScript expects a statement, you can also write an expression. Such a statement is called an expression statement. The reverse does not hold: you cannot write a statement where JavaScript expects an expression."
+    },
+    {
+      "type": "markdown",
+      "data": "[Source](http://speakingjs.com/es5/ch07.html#expression_statement)"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

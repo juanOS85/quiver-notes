@@ -1,0 +1,14 @@
+{
+  "title": "Update forked repo",
+  "cells": [
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "# Add the remote, call it \"upstream\":\n\ngit remote add upstream https://github.com/whoever/whatever.git\n\n# Fetch all the branches of that remote into remote-tracking branches,\n# such as upstream/master:\n\ngit fetch upstream\n\n# Make sure that you're on your master branch:\n\ngit checkout master\n# use `git checkout -b master [remote]/master` if master wasn't the default cloned branch.\n\n# Rewrite your master branch so that any commits of yours that\n# aren't already in upstream/master are replayed on top of that\n# other branch:\n\ngit rebase upstream/master"
+    },
+    {
+      "type": "text",
+      "data": "[Source](<a href=\"http://stackoverflow.com/a/1783426/1357423)\">http://stackoverflow.com/a/1783426/1357423)</a>"
+    }
+  ]
+}
