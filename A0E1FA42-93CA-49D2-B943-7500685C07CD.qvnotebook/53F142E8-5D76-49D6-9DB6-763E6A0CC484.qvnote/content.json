@@ -1,0 +1,9 @@
+{
+  "title": "Class extensions",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "What is the difference between a property/method declared in a class extension and one declared in a header file? Visibility.\n* The class header file is visible to other classes.\n* Properties and methods that are used internally by the class belong in a class extension"
+    }
+  ]
+}

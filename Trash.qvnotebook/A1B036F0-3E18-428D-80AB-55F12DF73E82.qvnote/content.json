@@ -1,9 +1,0 @@
-{
-  "title": "View Controllers",
-  "cells": [
-    {
-      "type": "markdown",
-      "data": "##UIViewController Initializers\n\n- `initWithBundle:bundle` is the designated initializer of `UIViewControler`\n\n##Accessing subviews\nTo apply extra initialization to the subviews defined in a XIB file before they appear to the user, there are to options:\n\n- `viewDidLoad:`: Override this method when the configuration only needs to be done once during the run of the app.\n- `viewWillAppear:`: Override this method if the configuraroin has to be done and redone every time the view controller appears on screen.\n\n##Interacting with Viwe Controllers and Their Views\nSome methods called during the lifecycle of a view controller and its view:\n- `application:didFinishLaunchingWithOptions:` where the app's root view controller is instantiated an set.  It is only called once when the app is launched.\n- `initWithNibName:bundle:` is the designated initializer for `UIViewController`.  When a view controllers is created, this method gets called once.\n- `loadView:` is overwritten to create a view controllers' view programmatically.\n- `viewDidLoad:` can be overwritten to configure views created by loading a NIB file.  It gets called after the view controllers' view is created.\n- `viewWillAppear:` and `viewDidAppear:` can be overwritten to configure views created by loading a NIB file.  They get called every time the view controller is moved on screen.\n- `viewWillDesappear:` and `viewDidDisappear:` get called every time the view controller is moved offscreen."
-    }
-  ]
-}
