@@ -1,0 +1,9 @@
+{
+  "title": "Delete submodule",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "1. Delete module from `.gitmodules`\n2. Stage `.gitmodules` changes\n3. Delete module from `.git/config`\n4. Run `git rm --cached path_to_submodule`\n5. Commit `.gitmodules` changes\n6. Delete untracked module files"
+    }
+  ]
+}
